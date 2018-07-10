@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns="https://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<body>
+	<div th:fragment="footer">
+		<script src="vendor/popper/popper.min.js"  th:src="@{/vendor/popper/popper.min.js}"></script>
+		<script src="vendor/datatables/jquery.dataTables.js" th:src="@{/vendor/datatables/jquery.dataTables.js}"></script>
+		<script src="vendor/datatables/dataTables.bootstrap4.js" th:src="@{/vendor/datatables/dataTables.bootstrap4.js}"></script>
+		<script src="js/sb-admin.min.js" th:src="@{/js/sb-admin.min.js}"></script>
+		<!-- Custom scripts for this page-->
+		<script src="js/sb-admin-datatables.min.js" th:src="@{/js/sb-admin-datatables.min.js}"></script>
+		<script src="js/ajax.js" th:src="@{/js/ajax.js}"></script>
+		<script type="text/javascript">
+			$('table').dataTable();
+		  	$(document).ready(function() {
+		    $('[id^=detail-]').hide();
+		    $('.toggle').click(function() {
+		        $input = $( this );
+		        $target = $('#'+$input.attr('data-toggle'));
+		        $target.slideToggle();
+		    });
+			});
+		</script>
+		<div class="navbar navbar-default navbar-fixed-bottom">
+		  <div class="container">
+		    <p class="navbar-text pull-left"> 2018 - wiliandasilvaoliveira1994@gmail.com </p>
+		    <p class="navbar-text pull-right">Desenvolvido por Wilian da Silva Oliveira </p>
+		  </div>
+		</div>
+	</div>
+</body>
+</html>

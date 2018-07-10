@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<body>
+  <div th:include="layout/cabecalho :: header"></div>
+  
+  <div class="container">
+  
+  	   <h3 class="page-header">Adicionar Reagente</h3>
+  	   
+  	  <div  id="mensagem"></div>		
+			
+	  <form method="POST" th:action="@{/salvar}" th:object="${reagente}">
+	  	<input type="hidden" class="form-control"	 placeholder="Digite o valor"  th:field="${reagente.id}">	
+	  	<label>Nome</label> 	
+		<div class="row">
+			
+			<div class="form-group col-md-3">
+				<input type="text" class="form-control"	id="nome" placeholder="Digite o valor" th:field="${reagente.nome}">	
+			</div>
+			<div class="col-md-5">
+				<button type="button" th:onclick="|buscaInfo()|" class="btn btn-primary" >Buscar</button>   <i class="fa fa-spinner fa-spin" id="spinner" style="font-size:24px; margin-left: 10px; display: none;"></i>
+			</div>
+		</div>
+	  
+		<div class="row">
+			
+			<div class="form-group col-md-3">
+				<label for="exampleInputEmail1">Fórmula</label>
+				<input	class="form-control"  placeholder="Formula" type="text" id="formula" th:field="${reagente.formula}">
+			</div>
+			<div class="form-group col-md-3">
+				<label for="exampleInputEmail1">Massa Molar</label>
+				<input type="text" class="form-control"  placeholder="Massa Molar" id="massaMolar" th:field="${reagente.massaMolar}" >
+			</div>
+			<div class="form-group col-md-3">
+				<label for="exampleInputEmail1">Familia</label>
+				<input type="text" class="form-control" placeholder="Familia" id="familia" th:field="${reagente.familia}">
+			</div>
+			<div class="form-group col-md-3">
+				<label for="exampleInputEmail1">Quantidade</label>
+				<input type="number" class="form-control" placeholder="Quantidade" id="quantidade" th:field="${reagente.quantidade}">
+			</div>
+
+		</div>
+		<div class="row">
+
+			<div class="form-group col-md-6">
+				<label for="exampleInputEmail1">Aparência</label>
+				<input	type="text" class="form-control"  placeholder="Aparência" id="aparencia"  th:field="${reagente.aparencia}" >
+			</div>
+			<div class="form-group col-md-6">
+				<label for="exampleInputEmail1">Link</label>
+				<input type="text" class="form-control" name="link" placeholder="Link" id="link" th:field="${reagente.link}" >
+			</div>
+			
+		</div>
+		<div class="row">
+				<div class="form-group col-md-2">
+					<label for="exampleInputEmail1">PH</label>
+					<input type="text" class="form-control"  name="PH" placeholder="PH" id="ph" th:field="${reagente.PH}" >
+				</div>
+				
+				<div class="form-group col-md-2">
+					<label for="exampleInputEmail1">Reage com H2O</label>
+					 <select name="reageH2O" id="reage" class="form-control">
+						<option value="">Selecione</option>
+						<option value="Sim"  th:field="${reagente.reageH2O}">Sim</option>
+						<option value="Não" th:field="${reagente.reageH2O}">Não</option>
+					</select>		  
+				</div>
+
+				<div class="form-group col-md-2">
+					<label for="exampleInputEmail1">Inflamável</label>
+					<select name="inflamavel" id="inflamavel" class="form-control">
+						<option value="">Selecione</option>
+						<option value="Sim"  th:field="${reagente.inflamavel}">Sim</option>
+						<option value="Não" th:field="${reagente.inflamavel}">Não</option>
+					</select>
+				</div>
+				<div class="form-group col-md-2">
+					<label for="exampleInputEmail1">Radioativo</label>
+					<select name="radioativo" id="radioativo" class="form-control">
+						<option value="">Selecione</option>
+						<option value="Sim"  th:field="${reagente.radioativo}">Sim</option>
+						<option value="Não" th:field="${reagente.radioativo}">Não</option>
+					</select>
+				</div>
+
+				<div class="form-group col-md-2">
+					<label for="exampleInputEmail1">Perigo a saude</label>
+					<input type="text" class="form-control" name="perigoSaude" placeholder="Digite o valor" id="perigoSaude" th:field="${reagente.perigoSaude}">
+				</div>
+				<div class="form-group col-md-2">
+					<label for="exampleInputEmail1">Corrosivo</label>
+					<select name="corrosivo" class="form-control">
+						<option value="">Selecione</option>
+						<option value="Sim"  th:field="${reagente.corrosivo}">Sim</option>
+						<option value="Não" th:field="${reagente.corrosivo}">Não</option>
+					</select>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group col-md-12">
+					<label for="exampleInputEmail1">Reatividade com outros materiais</label>
+					<textarea class="form-control" id="reatividade" name="reatividade" placeholder="Digite o valor"  rows="2" ></textarea>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group col-md-6">
+					<label for="exampleInputEmail1">Estabilidade durante o transporte</label> 
+					<input type="text" class="form-control"	id="estabilidade" name="estabilidade"	placeholder="Digite o valor" th:field="${reagente.estabilidade}" >
+				</div>
+				<div class="form-group col-md-6">
+					<label for="exampleInputEmail1">Armazenamento</label> 
+					<input type="text" class="form-control" id="armazenamento"	 placeholder="Digite o valor" th:field="${reagente.armazenamento}">
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group col-md-2">
+					<label for="exampleInputEmail1">Indicador</label> 
+					<select name="indicador" class="form-control">
+						<option value="">Selecione</option>
+						<option value="Sim"  th:field="${reagente.indicador}">Sim</option>
+						<option value="Não" th:field="${reagente.indicador}">Não</option>
+					</select>
+				</div>
+<!-- 				<div id="parametroIndicacao" class="form-group col-md-5"> -->
+<!-- 					<label for="exampleInputEmail1">Parâmetro de indicação</label>  -->
+<!-- 					<input type="text" class="form-control" id="parametroIndicacao" name="parametroIndicacao" placeholder="Digite o valor"> -->
+<!-- 				</div> -->
+				<div id="metodoPreparo" class="form-group col-md-10">
+					<label for="exampleInputEmail1">Metodo de preparo</label> 
+					<input type="text" class="form-control" id="metodoPreparo"	name="metodoPreparo" placeholder="Digite o valor">
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group col-md-2">
+					<label for="exampleInputEmail1">Passivo de Revalidação</label>
+					 <select name="passivoRevalidacao" class="form-control">
+						<option value="">Selecione</option>
+						<option value="Sim"  th:field="${reagente.passivoRevalidacao}">Sim</option>
+						<option value="Não" th:field="${reagente.passivoRevalidacao}">Não</option>
+					</select>
+				</div>
+				<div id="indicacaoRevalidacao" class="form-group col-md-10">
+					<label for="exampleInputEmail1">Indicaçôes para Revalidação</label>
+					<textarea rows="10"  class="form-control" id="indicacaoRevalidacao" name="indicacaoRevalidacao" placeholder="Digite o valor" >O processo de revalidação de um reagente vencido acontece á partir de testes comparativos. Aconselha-se realizar análises simultâneas entre a amostra de reagente vencido e uma amostra de um mesmo reagente com validade dentro do prazo, verificando e comparando possíveis resultados (tempo de reação, tempo para formação de precipitado, quantidade aparente de precipitado, eficiência da corrosão, mudança de coloração, entre outros processos). Após a realização dos testes, os resultados da amostra vencida e da amostra dentro da validade serão comparados para a verificação da possível revalidação do reagente vencido, para isso as duas amostras quando comparadas devem apresentar “eficiência” parecidas entre elas, posto isso o reagente poderá ser revalidado e reutilizado. Ao revalidar um reagente armazena-lo em frascos que não haja incompatibilidade com o mesmo, por exemplo: vidro ou polietileno. Frascos de reagentes vazios também podem ser reutilizados desde que o rótulo antigo seja completamente retirado e que o mesmo seja higienizado com água.  Se por ventura, os reagentes vencidos não apresentarem resultados satisfatórios, comparados com o reagente dentro da validade, o reagente não poderá ser revalidado, devendo passar pelos adequados processos de tratamento e disposição final.
+					
+					</textarea>
+				</div>
+			</div>
+<!-- 			<div class="row"> -->
+<!-- 				<div class="form-group col-md-3" id="apresentaDescarte"> -->
+<!-- 					<label for="exampleInputEmail1">Apresenta Descarte Segundo a FISPQ</label>  -->
+<!-- 					<select name="descarte" class="form-control"> -->
+<!-- 						<option value="">Selecione</option> -->
+<!-- 						<option value="Sim"  th:field="${reagente.descarte}">Sim</option> -->
+<!-- 						<option value="Não" th:field="${reagente.descarte}">Não</option> -->
+<!-- 					</select> -->
+<!-- 				</div> -->
+<!-- 				<div id="utilizadoDescarte" class="form-group col-md-4"> -->
+<!-- 					<label for="exampleInputEmail1">Utilizado ao Descarte de -->
+<!-- 						Outros Compostos</label>  -->
+<!-- 					<select name="descarteCompostos" class="form-control"> -->
+<!-- 						<option value="">Selecione</option> -->
+<!-- 						<option value="Sim"  th:field="${reagente.descarteCompostos}">Sim</option> -->
+<!-- 						<option value="Não" th:field="${reagente.descarteCompostos}">Não</option> -->
+<!-- 					</select> -->
+<!-- 				</div> -->
+<!-- 				<div id="composto" class="form-group col-md-5"> -->
+<!-- 					<label for="exampleInputEmail1">Composto para o descarte</label> -->
+<!-- 					 <input type="text" class="form-control" id="compostoDescarte" name="compostoDescarte" placeholder="Digite o valor"> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
+			<div class="row" >
+				<div class="form-group col-md-12">
+					<label for="exampleInputEmail1">Armário</label>
+					<textarea class="form-control" id="compostoDescarte" name="compostoDescarte" placeholder="Digite o valor" rows="4"></textarea>
+				</div>
+			</div>
+			<div class="row" >
+				<div class="form-group col-md-12">
+					<label for="exampleInputEmail1">Método de Descarte</label>
+					<textarea class="form-control" id="metodoDescarte" name="metodoDescarte" placeholder="Digite o valor" rows="4"></textarea>
+				</div>
+			</div>
+
+			<hr />
+
+			<div class="row">
+				<div class="col-md-12">
+					<button type="submit" class="btn btn-primary">Salvar</button>
+					<a th:href="@{/form}" class="btn btn-default">Cancelar</a>
+				</div>
+			</div>
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+
+	  </form>
+  </div> 
+  <div th:include="layout/rodape :: footer"></div>
+</body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+		<meta charset="utf-8"/>
+		<title>.</title>
+		
+		<style>
+ 
+ 
+			#formula-model {
+				border: solid 1px #ccc;
+				padding: 20px;
+				width: 300px;
+				white-space: nowrap;
+			}
+ 
+		</style>
+	</head>
+<body>
+	<div th:fragment="model">
+		<div class="modal fade" id="myModal" role="dialog">
+      <div class="modal-dialog ">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header" >
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title" id="titulo">N/A</h4>
+        </div>
+        <div class="modal-body">
+            <div class="panel panel-default">
+                  
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <div class="row toggle" id="dropdown-detail-1" data-toggle="detail-1">
+                            <div class="col-xs-10">
+                                Informações
+                            </div>
+                            <div class="col-xs-2"><i class="fa fa-chevron-down pull-right"></i></div>
+                        </div>
+                        <div id="detail-1">
+                            <hr></hr>
+                            
+                                <div id="collapseOne" class="panel-collapse collapse in">
+                                    <ul class="list-group">
+                                      <li class="list-group-item" ><div id="formula-model">N/A</div></li>
+                                      <li class="list-group-item"><div id="massa-model">N/A</div></li>
+                                      <li class="list-group-item"><div id="familia-model">N/A</div></li>
+                                      <li class="list-group-item"><div id="quantidade-model">N/A</div></li>
+                                      <li class="list-group-item"><div id="aparencia-model">N/A</div></li>
+                                      <li class="list-group-item"><div id="fispq-model">N/A</div></li>
+                                      <li class="list-group-item"><div id="ph-model">N/A</div></li>
+                                      <li class="list-group-item"><div id="perigo-model">N/A</div></li>
+                                      <li class="list-group-item"><div id="reatividade-model">N/A</div></li>
+                                      <li class="list-group-item"><div id="estabilidade-model">N/A</div></li>
+                                      <li class="list-group-item"><div id="armazenamento-model">N/A</div></li>
+                                    </ul>
+                                  </div>    
+                           </div> 
+                        
+                    </li>
+                    <li class="list-group-item">
+                        <div class="row toggle" id="dropdown-detail-2" data-toggle="detail-2">
+                            <div class="col-xs-10">
+                                Indicador
+                            </div>
+                            <div class="col-xs-2"><i class="fa fa-chevron-down pull-right"></i></div>
+                        </div>
+                        <div id="detail-2">
+                            <hr></hr>                                                   
+                                <div id="collapseOne" class="panel-collapse collapse in">
+                                    <ul class="list-group">
+                                        <li class="list-group-item"><div id="indicador-model">N/A</div></li>
+<!--                                         <li class="list-group-item"><div id="parametroIndicacao-model">N/A</div></li> -->
+                                        <li class="list-group-item"><div id="metodo-model">N/A</div></li>                                       
+                                    </ul>
+                                  </div>    
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="row toggle" id="dropdown-detail-3" data-toggle="detail-3">
+                            <div class="col-xs-10">
+                                Revalidação
+                            </div>
+                            <div class="col-xs-2"><i class="fa fa-chevron-down pull-right"></i></div>
+                        </div>
+                        <div id="detail-3">
+                            <hr></hr>
+                            <div id="collapseOne" class="panel-collapse collapse in">
+                                <ul class="list-group">
+                                    <li class="list-group-item"><div id="passivoRevalidacao-model">N/A</div></li>  
+                                    <li class="list-group-item"><div id="indicacaoRevalidacao-model">N/A</div></li>  
+                                </ul>
+                              </div>    
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="row toggle" id="dropdown-detail-4" data-toggle="detail-4">
+                            <div class="col-xs-10">
+                                Descarte
+                            </div>
+                            <div class="col-xs-2"><i class="fa fa-chevron-down pull-right"></i></div>
+                        </div>
+                        <div id="detail-4">
+                            <hr></hr>
+                            <div id="collapseOne" class="panel-collapse collapse in">
+                                <ul class="list-group">
+<!--                                     <li class="list-group-item"><div id="descarte-model">N/A</div></li> -->
+<!--                                     <li class="list-group-item"><div id="descarteCompostos-model">N/A</div></li> -->
+                                    <li class="list-group-item"><div id="compostoDescarte-model">N/A</div></li>
+                                    <li class="list-group-item"><div id="metodoDescarte-model">N/A</div></li>
+                                </ul>
+                              </div>    
+                        </div>
+                    </li>                    
+                </ul>
+          </div>
+        </div>
+        <div class="modal-footer">
+        	<a th:href="@{/documents/rotulo.pdf}" type="button" class="btn btn-info pull-left" download>
+			  <span class="glyphicon glyphicon-save-file" aria-hidden="true"></span>Rótulo para Revalidação
+			</a>
+       		<a th:href="@{/documents/ficha.pdf}" type="button" class="btn btn-info pull-left" download>
+			  <span class="glyphicon glyphicon-save-file" aria-hidden="true"></span>Ficha de Revalidação
+			</a>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      	</div>
+    	</div>
+ 	</div>
+	</div>
+</body>
+</html>

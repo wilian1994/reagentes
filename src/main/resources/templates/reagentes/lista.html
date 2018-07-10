@@ -1,0 +1,49 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4" >
+<body>
+ 	<div th:include="layout/cabecalho :: header"></div>
+ 	<div th:include="layout/model :: model"></div>	
+ 	
+ 		
+    <div class="container table-responsive">
+    
+    	<div th:if="${mensagemDelete}" class="alert alert-success">
+			<div th:text="${mensagemDelete}"></div>
+		</div>
+	
+    	<table class="table table-hover" >
+          <thead>
+            <tr>
+              <th>Nome</th>
+              <th>Fórmula</th>
+              <th>Massa Molar</th>
+              <th>Reage H2O</th>
+              <th>Inflamável</th>
+              <th>Radioativo</th>
+              <th>Ação</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr th:each="reagente : ${reagentes}">
+              <td><span th:text="${reagente.nome}"></span></td>
+              <td><span th:text="${reagente.formula}"></span></td>
+              <td><span th:text="${reagente.massaMolar}"></span></td>
+              <td><span th:text="${reagente.reageH2O}"></span></td>
+              <td><span th:text="${reagente.inflamavel}"></span></td>
+              <td><span th:text="${reagente.radioativo}"></span></td>
+              <td>
+                  	<a sec:authorize="hasRole('USER')" th:href="@{/delete/{id}(id=${reagente.id})}" title="Excluir Reagente"><span class="glyphicon glyphicon-trash"></span> </a>
+                  	<a sec:authorize="hasRole('USER')" th:href="@{/edit/{id}(id=${reagente.id})}" title="Editar Reagente"><span class="glyphicon glyphicon-pencil"></span></a>
+                  	<a th:if="${contribuicao == 'sim'}" th:href="@{/aprovaContribuicao/{id}(id=${reagente.id})}" title="Aprovar Contribuição"><span  class="glyphicon glyphicon-check"></span></a>
+	                <a th:onclick="|carregaEdicaoReagente('${reagente.id}')|" data-toggle="modal" data-target="#myModal" title="Visualizar dados Reagentes"><span class="glyphicon glyphicon-eye-open"></span></a>
+              </td>
+
+            </tr>
+          </tbody>
+    	</table> 
+   	</div>
+	<div th:include="layout/rodape :: footer"></div>
+	<script type="text/javascript">
+	
+	</script>
+</body>
+</html>
